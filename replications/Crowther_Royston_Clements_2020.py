@@ -11,7 +11,6 @@ from lifelines.fitters.mixins import SplineFitterMixin
 from lifelines.utils.safe_exp import safe_exp
 
 
-
 class CRCSplineFitter(SplineFitterMixin, ParametricRegressionFitter):
     """
     Crowther MJ, Royston P, Clements M. A flexible parametric accelerated failure time model.
@@ -22,7 +21,6 @@ class CRCSplineFitter(SplineFitterMixin, ParametricRegressionFitter):
         self.n_baseline_knots = n_baseline_knots
         self._fitted_parameter_names = ["beta_"] + ["gamma%d_" % i for i in range(0, self.n_baseline_knots)]
         super(CRCSplineFitter, self).__init__(*args, **kwargs)
-
 
     def _create_initial_point(self, Ts, E, entries, weights, Xs):
         return [
